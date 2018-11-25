@@ -1,5 +1,15 @@
 import { AdditionState, initialValue, Operation, OperationsConfig } from '@app/addition/addition.state';
-import { AdditionAction, ANSWER, CORRECT, CREATE_OPERATIONS, INIT, NEXT, WRONG } from '@app/addition/addition.actions';
+import {
+  AdditionAction,
+  ANSWER,
+  CORRECT,
+  CREATE_OPERATIONS, END_OF_ROUND,
+  INIT,
+  LEVEL_UP,
+  NEXT,
+  RETRY_LEVEL,
+  WRONG,
+} from '@app/addition/addition.actions';
 
 export const OPERATIONS: Operation[] = initOperations(50);
 
@@ -10,13 +20,20 @@ export function additionReducer(state: AdditionState = initialValue, action: Add
     case ANSWER:
       return { ...state, answers: [...state.answers, action.payload ]};
     case CREATE_OPERATIONS:
-      return { ...state, operations: createOperations(action.payload)};
+      return { ...state, operations: createOperations(action.payload), levelInfo: { ...action.payload } };
+    case END_OF_ROUND:
+      return { ...state, roundInfo: { ...action.payload } }
+      break;
+    case LEVEL_UP:
+      return { ...initialValue, level: state.level + 1 };
+    case RETRY_LEVEL:
+      return { ...initialValue, level: state.level };
     case NEXT:
       return { ...state, current: state.current + 1 };
     case CORRECT:
-      return { ...state, score: state.score + 1 };
+      return { ...state, score: state.score + 1, lastAnswer: { ...action.payload } };
     case WRONG:
-      return { ...state, score: Math.max(0, state.score - 1) };
+      return { ...state, score: Math.max(0, state.score - 1), lastAnswer: { ...action.payload } };
     default:
       return state;
   }

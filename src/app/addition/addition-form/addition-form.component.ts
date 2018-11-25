@@ -4,11 +4,11 @@ import { SimpleChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { FormControl, FormGroup, Validator, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-operation-form',
-  templateUrl: './operation-form.component.html',
-  styleUrls: ['./operation-form.component.css']
+  selector: 'app-addition-form',
+  templateUrl: './addition-form.component.html',
+  styleUrls: ['./addition-form.component.css']
 })
-export class OperationFormComponent implements OnChanges, OnInit {
+export class AdditionFormComponent implements OnChanges, OnInit {
 
   @Input()
   public operation: Operation;

@@ -1,0 +1,10 @@
+<form (submit)="submit($event)" [formGroup]="form">
+  <section>
+    <span>{{ operation.a}}</span>
+    <span> + </span>
+    <span>{{ operation.b }}</span>
+    <span> = </span>
+    <input type="number" [formControl]="result">
+  </section>
+  <button type="submit">Sprawdź</button>
+</form>

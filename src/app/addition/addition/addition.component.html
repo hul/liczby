@@ -1,3 +1,10 @@
-<h1>Dodawanie</h1>
-<app-operation-form [operation]="currentOperation$ | async" (answer)="onAnswer($event)"></app-operation-form>
-<div>Wynik: {{ score$ | async }} ({{ current$ | async }}/{{ operationsLength$ | async }})</div>
+<section>
+  <h1>Dodawanie</h1>
+  <app-hud
+    [score$]="score$"
+    [level$]="level$"
+    [operationsLength$]="operationsLength$"
+    [current$]="current$"
+  ></app-hud>
+  <app-addition-form [operation]="currentOperation$ | async" (answer)="onAnswer($event)"></app-addition-form>
+</section>

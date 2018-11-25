@@ -1,0 +1,6 @@
+.app-hud {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: #efefef;
+}

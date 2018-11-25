@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OperationFormComponent } from './operation-form.component';
+import { HudComponent } from './hud.component';
 
-describe('OperationFormComponent', () => {
-  let component: OperationFormComponent;
-  let fixture: ComponentFixture<OperationFormComponent>;
+describe('HudComponent', () => {
+  let component: HudComponent;
+  let fixture: ComponentFixture<HudComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OperationFormComponent ]
+      declarations: [ HudComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OperationFormComponent);
+    fixture = TestBed.createComponent(HudComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
