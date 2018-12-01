@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LevelService } from '@app/level/level.service';
+import { LevelService } from '@app/core/level/level.service';
 
 @NgModule({
   declarations: [],

@@ -20,7 +20,7 @@ import {
 import { combineLatest, Observable, Subscription } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LevelService, levelValue } from '@app/level/level.service';
+import { LevelService, levelValue } from '@app/core/level/level.service';
 
 
 @Component({

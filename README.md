@@ -1,3 +1,11 @@
+# TODO
+
+* ścieżka /dodawanie/runda niedostępna jeżeli nie rozpoczęto rozgrywki
+* ścieżka /dodawanie/koniec-rundy niedostępna jeżeli runda nie jest zakończona
+* stylowanie
+* poprawna / błędna odpowiedź
+* autofocus na input
+
 # NgRedux
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.
