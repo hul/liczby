@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdditionComponent } from '@app/addition/addition/addition.component';
 import { EndOfRoundComponent } from '@app/addition/end-of-round/end-of-round.component';
+import { EndOfRoundGuard } from '@app/addition/end-of-round/end-of-round.guard';
+import { ContinueGameGuard } from '@app/addition/addition/continue-game.guard';
 
 const routes: Routes = [
   {
@@ -11,11 +13,13 @@ const routes: Routes = [
   },
   {
     path: 'runda',
-    component: AdditionComponent
+    component: AdditionComponent,
+    canActivate: [ContinueGameGuard],
   },
   {
     path: 'koniec-rundy',
-    component: EndOfRoundComponent
+    component: EndOfRoundComponent,
+    canActivate: [EndOfRoundGuard],
   }
 ];
 

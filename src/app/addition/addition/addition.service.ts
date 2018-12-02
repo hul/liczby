@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import {
-  Answer,
-  answersSelector,
-  currentSelector,
-  FeatureAdditionState,
-  levelSelector,
-  operationsSelector, RoundInfo,
-  scoreSelector, totalScore,
-} from '@app/addition/addition.state';
+import { Answer, FeatureAdditionState, RoundInfo } from '@app/addition/addition.state';
 import { filter, map } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 import { Answer as UserAnswer, Correct, CreateOperations, EndOfRound, Next, Start, Wrong } from '@app/addition/addition.actions';
 import { LevelService, levelValue } from '@app/core/level/level.service';
+import {
+  answersSelector,
+  currentSelector,
+  levelSelector,
+  operationsSelector,
+  scoreSelector,
+  totalScore,
+} from '@app/addition/addition.selectors';
 
 @Injectable({
   providedIn: 'root'

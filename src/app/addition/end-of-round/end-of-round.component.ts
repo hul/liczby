@@ -2,9 +2,10 @@ import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { CreateOperations, LevelUp, RetryLevel } from '@app/addition/addition.actions';
 import { Store, select } from '@ngrx/store';
 import { LevelService, levelValue, SCORE_TO_LEVEL_UP } from '@app/core/level/level.service';
-import { RoundInfo, roundInfoSelector } from '@app/addition/addition.state';
+import { RoundInfo } from '@app/addition/addition.state';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { roundInfoSelector } from '@app/addition/addition.selectors';
 
 @Component({
   selector: 'app-end-of-round',
