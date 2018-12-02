@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: center;
   display: flex;
-  transition: all .5s;
+  transition: all .5s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .app-round-status li.app-active {

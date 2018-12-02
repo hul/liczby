@@ -2,6 +2,16 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, O
 import { Answer, Operation } from '@app/addition/addition.state';
 import { SimpleChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { delay } from 'rxjs/operators';
+import { of } from 'rxjs';
+
+export enum ViewMode {
+  VIEW = 'view',
+  EDIT = 'edit'
+}
+
+const ANSWER_CORRECT_DELAY = 1500;
+const ANSWER_WRONG_DELAY = 3000;
 
 @Component({
   selector: 'app-addition-form',
@@ -20,6 +30,9 @@ export class AdditionFormComponent implements OnChanges, OnInit, AfterViewInit {
   public input: ElementRef;
 
   public form: FormGroup;
+  public mode: ViewMode = ViewMode.EDIT;
+  public userAnswer: Answer;
+  public ViewMode = ViewMode;
 
   constructor() {}
 
@@ -48,19 +61,46 @@ export class AdditionFormComponent implements OnChanges, OnInit, AfterViewInit {
       return;
     }
 
-    this.answer.emit({
+    this.mode = ViewMode.VIEW;
+    const userAnswer = {
       operation: this.operation,
       value: this.result.value,
       correct: this.result.value === this.operation.result,
-    });
+    };
+
+    this.userAnswer = userAnswer;
+    this.userAnswer.correct ? this.afterAnswer(userAnswer, ANSWER_CORRECT_DELAY) : this.afterWrongAnswer(userAnswer);
   }
 
   public get result(): FormControl {
     return this.form.get('result') as FormControl;
   }
 
+  private emitAnswer(answer: Answer): void {
+    this.answer.emit(answer);
+  }
+
   private reset() {
+    this.mode = ViewMode.EDIT;
     this.result.reset('');
+  }
+
+  private afterAnswer(answer: Answer, duration: number): void {
+    of(null).pipe(delay(duration)).subscribe(() => this.emitAnswer({ ...answer }));
+  }
+
+  private afterWrongAnswer(answer: Answer): void {
+    of(null).pipe(delay(ANSWER_CORRECT_DELAY)).subscribe(() => {
+      this.userAnswer = {
+        operation: this.operation,
+        value: this.operation.result,
+        correct: true,
+        autoCorrection: true
+      };
+      this.result.setValue(this.operation.result);
+    });
+
+    this.afterAnswer(answer, ANSWER_WRONG_DELAY);
   }
 
 }

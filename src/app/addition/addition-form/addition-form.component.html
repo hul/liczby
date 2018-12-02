@@ -1,10 +1,14 @@
 <form (submit)="submit($event)" [formGroup]="form">
-  <section>
+  <section
+    [class.auto-corrected]="userAnswer && mode === ViewMode.VIEW && userAnswer.correct && userAnswer.autoCorrection"
+    [class.correct]="userAnswer && mode === ViewMode.VIEW && userAnswer.correct && !userAnswer.autoCorrection"
+    [class.wrong]="userAnswer && mode === ViewMode.VIEW && !userAnswer.correct"
+  >
     <span>{{ operation.a}}</span>
     <span> + </span>
     <span>{{ operation.b }}</span>
-    <span> = </span>
-    <input type="number" [formControl]="result" #input>
+    <span class="equal"> = </span>
+    <input type="number" [formControl]="result" #input [readonly]="mode === ViewMode.VIEW">
   </section>
   <button type="submit">Sprawdź</button>
 </form>

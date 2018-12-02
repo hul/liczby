@@ -25,6 +25,7 @@ export interface Answer {
   correct: boolean;
   operation: Operation;
   value: any;
+  autoCorrection?: boolean;
 }
 
 export interface OperationsConfig {
