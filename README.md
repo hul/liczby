@@ -1,12 +1,17 @@
 # TODO
 
-* ścieżka /dodawanie/runda niedostępna jeżeli nie rozpoczęto rozgrywki
-* ścieżka /dodawanie/koniec-rundy niedostępna jeżeli runda nie jest zakończona
-* stylowanie
-* poprawna / błędna odpowiedź
-* autofocus na input
+* po udzieleniu błędnej odpowiedzi, pokaż prawidłowy wynik
+* wygląd
 
-# NgRedux
+## Done
++ publikacja
++ zmiana nazwy projektu z ng-redux na coś sensowego
++ ścieżka /dodawanie/runda niedostępna jeżeli nie rozpoczęto rozgrywki
++ ścieżka /dodawanie/koniec-rundy niedostępna jeżeli runda nie jest zakończona
++ poprawna / błędna odpowiedź
++ autofocus na input
+
+# Liczby
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.
 
