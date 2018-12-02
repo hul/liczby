@@ -9,13 +9,15 @@ import { AdditionRoutingModule } from '@app/addition/addition-routing.module';
 import { AdditionFormComponent } from '@app/addition/addition-form/addition-form.component';
 import { HudComponent } from './hud/hud.component';
 import { EndOfRoundComponent } from './end-of-round/end-of-round.component';
+import { RoundStatusComponent } from './round-status/round-status.component';
 
 @NgModule({
   declarations: [
     AdditionComponent,
     AdditionFormComponent,
     HudComponent,
-    EndOfRoundComponent
+    EndOfRoundComponent,
+    RoundStatusComponent
   ],
   imports: [
     AdditionRoutingModule,

@@ -8,14 +8,18 @@ import { Observable } from 'rxjs';
 })
 export class HudComponent implements OnInit {
 
-  @Input() public score$: Observable<number>;
-  @Input() public current$: Observable<number>;
-  @Input() public level$: Observable<number>;
-  @Input() public operationsLength$: Observable<number>;
+  @Input()
+  public score: number;
 
-  constructor() { }
+  @Input()
+  public level: number;
 
-  ngOnInit() {
+  @Input()
+  public totalScore: number;
+
+  public constructor() { }
+
+  public ngOnInit(): void {
   }
 
 }

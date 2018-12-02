@@ -1,0 +1,11 @@
+<section class="app-round-status">
+  <ul>
+    <li
+      *ngFor="let operation of operations; index as i;"
+      [class.app-active]="i == currentRound"
+      [class.app-correct]="answers[i]?.correct"
+      [class.app-wrong]="answers[i]?.correct === false"
+    >
+    </li>
+  </ul>
+</section>

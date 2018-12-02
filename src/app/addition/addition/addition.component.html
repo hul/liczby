@@ -1,10 +1,17 @@
 <section>
   <h1>Dodawanie</h1>
   <app-hud
-    [score$]="score$"
-    [level$]="level$"
-    [operationsLength$]="operationsLength$"
-    [current$]="current$"
+    [level]="level$ | async"
+    [score]="score$ | async"
+    [totalScore]="totalScore$ | async"
   ></app-hud>
-  <app-addition-form [operation]="currentOperation$ | async" (answer)="onAnswer($event)"></app-addition-form>
+  <app-addition-form
+    (answer)="onAnswer($event)"
+    [operation]="currentOperation$ | async"
+  ></app-addition-form>
+  <app-round-status
+    [answers]="answers$ | async"
+    [operations]="operations$ | async"
+    [currentRound]="current$ | async"
+  ></app-round-status>
 </section>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 import { Answer, Operation } from '@app/addition/addition.state';
 import { SimpleChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { FormControl, FormGroup, Validator, Validators } from '@angular/forms';
@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validator, Validators } from '@angular/forms';
   templateUrl: './addition-form.component.html',
   styleUrls: ['./addition-form.component.css']
 })
-export class AdditionFormComponent implements OnChanges, OnInit {
+export class AdditionFormComponent implements OnChanges, OnInit, AfterViewInit {
 
   @Input()
   public operation: Operation;
@@ -16,9 +16,18 @@ export class AdditionFormComponent implements OnChanges, OnInit {
   @Output()
   public answer = new EventEmitter<Answer>();
 
+  @ViewChild('input')
+  public input: ElementRef;
+
   public form: FormGroup;
 
   constructor() {}
+
+  ngOnInit() {
+    this.form = new FormGroup({
+      result: new FormControl('', Validators.required)
+    });
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.operation.isFirstChange()) {
@@ -28,10 +37,9 @@ export class AdditionFormComponent implements OnChanges, OnInit {
     this.reset();
   }
 
-  ngOnInit() {
-    this.form = new FormGroup({
-      result: new FormControl('', Validators.required)
-    });
+  public ngAfterViewInit(): void {
+    console.log(this.input);
+    this.input.nativeElement.focus();
   }
 
   public submit(event: Event): void {

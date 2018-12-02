@@ -25,7 +25,7 @@ export function additionReducer(state: AdditionState = initialValue, action: Add
       return { ...state, roundInfo: { ...action.payload } }
       break;
     case LEVEL_UP:
-      return { ...initialValue, level: state.level + 1 };
+      return { ...initialValue, level: state.level + 1, totalScore: state.totalScore + state.score };
     case RETRY_LEVEL:
       return { ...initialValue, level: state.level };
     case NEXT:
@@ -33,7 +33,7 @@ export function additionReducer(state: AdditionState = initialValue, action: Add
     case CORRECT:
       return { ...state, score: state.score + 1, lastAnswer: { ...action.payload } };
     case WRONG:
-      return { ...state, score: Math.max(0, state.score - 1), lastAnswer: { ...action.payload } };
+      return { ...state, score: state.score, lastAnswer: { ...action.payload } };
     default:
       return state;
   }

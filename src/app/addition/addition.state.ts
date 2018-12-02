@@ -7,6 +7,7 @@ export interface AdditionState {
   level: number;
   levelInfo: any;
   roundInfo: RoundInfo;
+  totalScore: number;
 }
 
 export interface FeatureAdditionState {
@@ -45,12 +46,13 @@ export interface RoundInfo {
 export const initialValue = {
   answers: [],
   current: 0,
-  operations: [],
-  score: 0,
   lastAnswer: null,
   level: 1,
   levelInfo: null,
+  operations: [],
   roundInfo: null,
+  score: 0,
+  totalScore: 0,
 };
 
 export const currentSelector = (state: FeatureAdditionState) => state.addition.current;
@@ -62,3 +64,7 @@ export const scoreSelector = (state: FeatureAdditionState) => state.addition.sco
 export const levelSelector = (state: FeatureAdditionState) => state.addition.level;
 
 export const roundInfoSelector = (state: FeatureAdditionState) => state.addition.roundInfo;
+
+export const answersSelector = (state: FeatureAdditionState) => state.addition.answers;
+
+export const totalScore = (state: FeatureAdditionState) => state.addition.totalScore;

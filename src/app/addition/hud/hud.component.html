@@ -1,5 +1,5 @@
 <section class="app-hud">
-  <div>Wynik: {{ score$ | async }}</div>
-  <div>Runda: ({{ current$ | async }}/{{ operationsLength$ | async }})</div>
-  <div>Level: {{ level$ | async }}</div>
+  <div>Wynik rundy: {{ score }}</div>
+  <div>Punkty: {{ totalScore + score }}</div>
+  <div>Poziom: {{ level }}</div>
 </section>

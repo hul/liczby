@@ -1,110 +1,55 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  Answer,
-  currentSelector,
-  levelSelector,
-  operationsSelector,
-  RoundInfo,
-  scoreSelector,
-} from '@app/addition/addition.state';
-import { select, Store } from '@ngrx/store';
-import {
-  Correct,
-  CreateOperations,
-  Next,
-  Start,
-  Wrong,
-  Answer as UserAnswer,
-  EndOfRound,
-} from '@app/addition/addition.actions';
-import { combineLatest, Observable, Subscription } from 'rxjs';
-import { filter, map, tap } from 'rxjs/operators';
+import { Answer, Operation, RoundInfo } from '@app/addition/addition.state';
+import { Observable, Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LevelService, levelValue } from '@app/core/level/level.service';
+import { AdditionService } from '@app/addition/addition/addition.service';
 
 
 @Component({
   selector: 'app-addition',
   templateUrl: './addition.component.html',
-  styleUrls: ['./addition.component.css']
+  styleUrls: ['./addition.component.css'],
+  providers: [AdditionService],
 })
 export class AdditionComponent implements OnInit, OnDestroy {
-  operations$: Observable<any>;
-  current$: Observable<number>;
-  level$: Observable<number>;
-  score$: Observable<number>;
-  currentOperation$: Observable<any>;
-  operationsLength$: Observable<number>;
-  endOfRound$: Observable<RoundInfo>;
+  answers$: Observable<Answer[]> = this.additionService.answers$;
+  operations$: Observable<Operation[]> = this.additionService.operations$;
+  current$: Observable<number> = this.additionService.current$;
+  level$: Observable<number> = this.additionService.level$;
+  score$: Observable<number> = this.additionService.score$;
+  totalScore$: Observable<number> = this.additionService.totalScore$;
+  currentOperation$: Observable<any> = this.additionService.currentOperation$;
+  endOfRound$: Observable<RoundInfo> = this.additionService.endOfRound$;
 
   private subscriptions = new Subscription();
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private levelService: LevelService,
+    private additionService: AdditionService,
     private router: Router,
-    private store: Store<any>,
   ) {
     if (this.activatedRoute.snapshot.data.start) {
-      this.store.dispatch(new Start());
-      this.createOperations(levelValue(1));
+      this.additionService.start();
     }
-    this.createStreams();
     this.initSubscriptions();
   }
 
-  public ngOnInit(): void {
-  }
+  public ngOnInit(): void { }
 
   public ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
 
   public onAnswer(answer: Answer): void {
-    this.store.dispatch(new UserAnswer(answer));
-
-    answer.correct
-      ? this.store.dispatch(new Correct(answer))
-      : this.store.dispatch(new Wrong(answer));
-
-    this.store.dispatch(new Next());
+    this.additionService.answer(answer);
   }
-
-  private createOperations(max = 10, min = 1): void {
-    this.store.dispatch(new CreateOperations(this.levelService.createOperations(max, min)));
-  }
-
-  private createStreams(): void {
-    this.operations$ = this.store.pipe(select(operationsSelector));
-    this.current$ = this.store.pipe(select(currentSelector));
-    this.level$ = this.store.pipe(select(levelSelector));
-    this.score$ = this.store.pipe(select(scoreSelector));
-    this.currentOperation$ = combineLatest(this.operations$, this.current$).pipe(
-      filter(values => values[0].length > values[1]),
-      map(values => values[0][values[1]]),
-    );
-    this.endOfRound$ = combineLatest(
-      this.operations$,
-      this.current$,
-      this.score$,
-      this.level$,
-    ).pipe(
-      map(values => {
-        const last = values[1] !== 0 && values[0].length === values[1];
-        const score = values[2];
-        const level = values[3];
-        return { last, score, level };
-      })
-    );
-    this.operationsLength$ = this.operations$.pipe(map(operations => operations.length));
-  }
-
 
   private initSubscriptions(): void {
     this.subscriptions.add(
       this.endOfRound$.pipe(filter(roundInfo => roundInfo.last))
         .subscribe(roundInfo => {
-          this.store.dispatch(new EndOfRound(roundInfo));
+          this.additionService.endOfRound(roundInfo);
           this.router.navigate(['/dodawanie/koniec-rundy']);
         })
     );

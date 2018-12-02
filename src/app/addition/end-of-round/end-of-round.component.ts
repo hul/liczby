@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { CreateOperations, LevelUp, RetryLevel } from '@app/addition/addition.actions';
 import { Store, select } from '@ngrx/store';
 import { LevelService, levelValue, SCORE_TO_LEVEL_UP } from '@app/core/level/level.service';
@@ -12,9 +12,14 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./end-of-round.component.css']
 })
 export class EndOfRoundComponent implements OnInit, OnDestroy {
-
   public roundInfo: RoundInfo;
+
   private subscriptions = new Subscription();
+
+  @HostListener('document:keydown.enter', ['$event'])
+  public onKeydownHandler(event: KeyboardEvent): void {
+    this.playNextLevel();
+  }
 
   constructor(
     private store: Store<any>,

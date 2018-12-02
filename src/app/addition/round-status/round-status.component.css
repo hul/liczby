@@ -1,0 +1,30 @@
+.app-round-status ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-evenly;
+  padding: 0;
+}
+
+.app-round-status li {
+  background: #efefef;
+  padding: 8px;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  transition: all .5s;
+}
+
+.app-round-status li.app-active {
+  border: 2px solid #333333;
+}
+
+.app-round-status li.app-correct {
+  background: #00EE00;
+}
+
+.app-round-status li.app-wrong {
+  background: #FF0000;
+}
