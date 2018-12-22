@@ -9,22 +9,3 @@ input {
   width: 10rem;
   border: none;
 }
-
-input, span {
-  transition: all .5s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-.correct span,
-.correct input {
-  color: #00ff00;
-}
-
-.wrong span,
-.wrong input {
-  color: #ff0000;
-}
-
-.auto-corrected input,
-.auto-corrected .equal {
-  color: #0000ff;
-}

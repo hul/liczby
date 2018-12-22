@@ -1,9 +1,9 @@
 # TODO
 
+* po udzieleniu błędnej odpowiedzi, pokaż prawidłowy wynik
 * wygląd
 
 ## Done
-+ po udzieleniu błędnej odpowiedzi, pokaż prawidłowy wynik
 + publikacja
 + zmiana nazwy projektu z ng-redux na coś sensowego
 + ścieżka /dodawanie/runda niedostępna jeżeli nie rozpoczęto rozgrywki
