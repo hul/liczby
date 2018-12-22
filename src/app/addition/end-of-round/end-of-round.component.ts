@@ -14,16 +14,15 @@ import { filter, map } from 'rxjs/operators';
   styleUrls: ['./end-of-round.component.css']
 })
 export class EndOfRoundComponent implements OnInit, OnDestroy {
-  public roundInfo: RoundInfo;
-  public roundInfo$: Observable<RoundInfo>;
-  public roundResult$: Observable<boolean>;
-
   public answers$: Observable<Answer[]>;
+  public roundInfo$: Observable<RoundInfo>;
+  public roundInfo: RoundInfo;
+  public roundResult$: Observable<boolean>;
 
   private subscriptions = new Subscription();
 
   @HostListener('document:keydown.enter', ['$event'])
-  public onKeydownHandler(event: KeyboardEvent): void {
+  public onKeydownHandler(): void {
     this.playNextLevel();
   }
 
@@ -52,21 +51,20 @@ export class EndOfRoundComponent implements OnInit, OnDestroy {
   public playNextLevel(): void {
     this.roundInfo.score > SCORE_TO_LEVEL_UP
       ? this.levelUp(this.roundInfo)
-      : this.restartLevel(this.roundInfo);
-    this.router.navigate(['/dodawanie/runda']);
+      : this.restartLevel();
   }
 
   private levelUp(roundInfo): void {
     this.store.dispatch(new LevelUp());
-    this.createOperations(levelValue(roundInfo.level + 1), levelValue(roundInfo.level - 1));
+    const max = levelValue(roundInfo.level + 1);
+    const min = levelValue(roundInfo.level - 1);
+    this.store.dispatch(new CreateOperations(LevelService.createOperations(max, min)));
+    this.router.navigate([ '/dodawanie/runda' ]);
   }
 
-  private restartLevel(roundInfo): void {
+  private restartLevel(): void {
     this.store.dispatch(new RetryLevel());
-    this.createOperations(levelValue(roundInfo.level), levelValue(roundInfo.level - 2));
+    this.router.navigate([ '/dodawanie/runda' ]);
   }
 
-  private createOperations(max = 10, min = 1): void {
-    this.store.dispatch(new CreateOperations(this.levelService.createOperations(max, min)));
-  }
 }

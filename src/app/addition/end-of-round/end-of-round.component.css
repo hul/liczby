@@ -7,7 +7,7 @@
   text-decoration: line-through;
 }
 
-.incorrect::after {
+.correct::before {
   content: ' ';
   display: inline;
 }
@@ -16,13 +16,14 @@ section {
   margin: auto;
 }
 
-ol {
+table {
   padding: 0;
   font-size: 1.5rem;
+  margin: 2rem auto;
 }
 
-li {
-  list-style-type: none;
+td {
+  text-align: left;
 }
 
 section {

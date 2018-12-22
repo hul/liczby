@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CreateOperations } from '@app/addition/addition.actions';
+import { createOperations } from '@app/core/level/operations';
 
 export const SCORE_TO_LEVEL_UP = 7;
 export const DIFFICULTY_FACTOR = 5;
@@ -12,13 +12,14 @@ export class LevelService {
 
   constructor() { }
 
-  public createOperations(max = 10, min = 1): any {
-    return {
+  public static createOperations(max = 10, min = 1): any {
+    const config = {
       count: QUESTIONS,
       min: min,
       max: max,
       minA: 0,
       minB: 1,
     };
+    return createOperations(config);
   }
 }

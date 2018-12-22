@@ -14,12 +14,12 @@ const routes: Routes = [
   {
     path: 'runda',
     component: AdditionComponent,
-    canActivate: [ContinueGameGuard],
+    canActivate: [ ContinueGameGuard ],
   },
   {
     path: 'koniec-rundy',
     component: EndOfRoundComponent,
-    canActivate: [EndOfRoundGuard],
+    canActivate: [ EndOfRoundGuard ],
   }
 ];
 

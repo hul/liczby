@@ -6,6 +6,6 @@ import { NavigationModule } from '@app/core/navigation/navigation.module';
 @NgModule({
   declarations: [],
   imports: [ CommonModule, LevelModule, NavigationModule ],
-  exports: [ LevelModule, NavigationModule ]
+  exports: [ LevelModule, NavigationModule ],
 })
 export class CoreModule { }

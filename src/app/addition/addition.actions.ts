@@ -20,12 +20,16 @@ export class Start implements Action {
 
 export class LevelUp {
   public readonly type = LEVEL_UP;
-  public constructor(public payload? :any) {}
+
+  public constructor(public payload?: any) {
+  }
 }
 
 export class RetryLevel {
   public readonly type = RETRY_LEVEL;
-  public constructor(public payload? :any) {}
+
+  public constructor(public payload?: any) {
+  }
 }
 
 export class CreateOperations implements Action {

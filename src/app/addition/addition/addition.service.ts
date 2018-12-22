@@ -30,7 +30,6 @@ export class AdditionService {
 
   public constructor(
     private store: Store<FeatureAdditionState>,
-    private levelService: LevelService,
   ) {
     this.createStreams();
   }
@@ -41,7 +40,7 @@ export class AdditionService {
   }
 
   public createOperations(max = 10, min = 1): void {
-    this.store.dispatch(new CreateOperations(this.levelService.createOperations(max, min)));
+    this.store.dispatch(new CreateOperations(LevelService.createOperations(max, min)));
   }
 
   public answer(answer: Answer): void {
