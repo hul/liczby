@@ -19,8 +19,12 @@
     ],
     "paths": {
       "@app/*": ["app/*"],
-      "@counter/*": ["app/counter/*"],
-      "@feature/*": ["app/feature/*"]
+      "@addition/*": [
+        "app/addition/*"
+      ],
+      "@components/*": [
+        "app/components/*"
+      ]
     }
   }
 }

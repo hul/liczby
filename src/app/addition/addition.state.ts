@@ -43,15 +43,3 @@ export interface RoundInfo {
   level: number;
 }
 
-export const initialValue = {
-  answers: [],
-  current: 0,
-  lastAnswer: null,
-  level: 1,
-  levelInfo: null,
-  operations: [],
-  roundInfo: null,
-  score: 0,
-  totalScore: 0,
-};
-

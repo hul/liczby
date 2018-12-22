@@ -5,7 +5,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from '@app/app-routing.module';
 import { AppComponent } from './app.component';
-import { NavigationModule } from '@app/core/navigation/navigation.module';
+import { NavigationModule } from '@app/components/navigation/navigation.module';
 import { LevelModule } from '@app/core/level/level.module';
 
 @NgModule({

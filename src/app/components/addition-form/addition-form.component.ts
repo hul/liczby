@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
-import { Answer, Operation } from '@app/addition/addition.state';
+import { Answer, Operation } from '@addition/addition.state';
 import { SimpleChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 

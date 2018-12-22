@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Answer, Operation } from '@app/addition/addition.state';
-import { Observable } from 'rxjs';
+import { Answer, Operation } from '@addition/addition.state';
 
 @Component({
   selector: 'app-round-status',

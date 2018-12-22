@@ -1,9 +1,10 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Answer, Operation, RoundInfo } from '@app/addition/addition.state';
-import { Observable, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AdditionService } from '@app/addition/addition/addition.service';
+import { Observable, Subscription } from 'rxjs';
+
+import { Answer, Operation, RoundInfo } from '@app/addition/addition.state';
+import { AdditionService } from '@app/addition/addition.service';
 
 
 @Component({
@@ -27,7 +28,6 @@ export class AdditionComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private additionService: AdditionService,
-    private router: Router,
   ) {
     if (this.activatedRoute.snapshot.data.start) {
       this.additionService.start();
@@ -50,7 +50,6 @@ export class AdditionComponent implements OnInit, OnDestroy {
       this.endOfRound$.pipe(filter(roundInfo => roundInfo.last))
         .subscribe(roundInfo => {
           this.additionService.endOfRound(roundInfo);
-          this.router.navigate(['/dodawanie/koniec-rundy']);
         })
     );
   }

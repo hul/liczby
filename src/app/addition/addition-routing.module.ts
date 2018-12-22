@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdditionComponent } from '@app/addition/addition/addition.component';
-import { EndOfRoundComponent } from '@app/addition/end-of-round/end-of-round.component';
-import { EndOfRoundGuard } from '@app/addition/end-of-round/end-of-round.guard';
-import { ContinueGameGuard } from '@app/addition/addition/continue-game.guard';
+
+import { AdditionComponent } from '@app/addition/components/addition.component';
+import { ContinueGameGuard } from '@app/addition/continue-game.guard';
+import { EndOfRoundComponent } from '@app/components/end-of-round/end-of-round.component';
+import { EndOfRoundGuard } from '@app/components/end-of-round/end-of-round.guard';
 
 const routes: Routes = [
   {

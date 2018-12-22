@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { FeatureAdditionState } from '@app/addition/addition.state';
-import { select, Store } from '@ngrx/store';
-import { operationsSelector } from '@app/addition/addition.selectors';
+import { Injectable } from '@angular/core';
 import { map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+
+import { FeatureAdditionState } from '@addition/addition.state';
+import { operationsSelector } from '@addition/store/addition.selectors';
 
 @Injectable({
   providedIn: 'root'

@@ -1,4 +1,4 @@
-import { AdditionState, initialValue } from '@app/addition/addition.state';
+import { AdditionState } from '../addition.state';
 import {
   AdditionAction,
   ANSWER,
@@ -10,7 +10,19 @@ import {
   NEXT,
   RETRY_LEVEL,
   WRONG,
-} from '@app/addition/addition.actions';
+} from '@addition/store/addition.actions';
+
+export const initialValue = {
+  answers: [],
+  current: 0,
+  lastAnswer: null,
+  level: 1,
+  levelInfo: null,
+  operations: [],
+  roundInfo: null,
+  score: 0,
+  totalScore: 0,
+};
 
 export function additionReducer(state: AdditionState = initialValue, action: AdditionAction): AdditionState {
   switch (action.type) {
