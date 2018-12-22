@@ -22,12 +22,11 @@ export function additionReducer(state: AdditionState = initialValue, action: Add
     case CREATE_OPERATIONS:
       return { ...state, operations: createOperations(action.payload), levelInfo: { ...action.payload } };
     case END_OF_ROUND:
-      return { ...state, roundInfo: { ...action.payload } }
-      break;
+      return { ...state, roundInfo: { ...action.payload } };
     case LEVEL_UP:
       return { ...initialValue, level: state.level + 1, totalScore: state.totalScore + state.score };
     case RETRY_LEVEL:
-      return { ...initialValue, level: state.level };
+      return { ...initialValue, level: state.level, totalScore: state.totalScore + state.score };
     case NEXT:
       return { ...state, current: state.current + 1 };
     case CORRECT:
