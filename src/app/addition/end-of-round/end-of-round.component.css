@@ -1,0 +1,30 @@
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+  text-decoration: line-through;
+}
+
+.incorrect::after {
+  content: ' ';
+  display: inline;
+}
+
+section {
+  margin: auto;
+}
+
+ol {
+  padding: 0;
+  font-size: 1.5rem;
+}
+
+li {
+  list-style-type: none;
+}
+
+section {
+  text-align: center;
+}

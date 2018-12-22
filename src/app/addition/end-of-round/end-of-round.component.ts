@@ -2,10 +2,11 @@ import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { CreateOperations, LevelUp, RetryLevel } from '@app/addition/addition.actions';
 import { Store, select } from '@ngrx/store';
 import { LevelService, levelValue, SCORE_TO_LEVEL_UP } from '@app/core/level/level.service';
-import { RoundInfo } from '@app/addition/addition.state';
+import { Answer, RoundInfo } from '@app/addition/addition.state';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { roundInfoSelector } from '@app/addition/addition.selectors';
+import { Observable, Subscription } from 'rxjs';
+import { answersSelector, roundInfoSelector } from '@app/addition/addition.selectors';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-end-of-round',
@@ -14,6 +15,10 @@ import { roundInfoSelector } from '@app/addition/addition.selectors';
 })
 export class EndOfRoundComponent implements OnInit, OnDestroy {
   public roundInfo: RoundInfo;
+  public roundInfo$: Observable<RoundInfo>;
+  public roundResult$: Observable<boolean>;
+
+  public answers$: Observable<Answer[]>;
 
   private subscriptions = new Subscription();
 
@@ -31,6 +36,12 @@ export class EndOfRoundComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.subscriptions.add(
       this.store.pipe(select(roundInfoSelector)).subscribe(roundInfo => this.roundInfo = roundInfo)
+    );
+    this.answers$ = this.store.pipe(select(answersSelector));
+    this.roundInfo$ = this.store.pipe(select(roundInfoSelector));
+    this.roundResult$ = this.roundInfo$.pipe(
+      filter(result => !!result),
+      map(result => result.score > SCORE_TO_LEVEL_UP)
     );
   }
 

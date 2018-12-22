@@ -1,4 +1,27 @@
-<p>
-  Koniec rundy, Twój wynik to: {{ roundInfo?.score }}
-</p>
-<button (click)="playNextLevel()">Dalej</button>
+<section>
+  <h1>
+    Koniec rundy
+  </h1>
+  <h2>
+    Twój wynik to: {{ (roundInfo$ | async).score }}
+  </h2>
+  <ol>
+    <li *ngFor="let answer of answers$ | async">
+      <ng-container *ngIf="answer.correct; then correct; else wrong;"></ng-container>
+      <ng-template #correct>
+        <span class="correct">{{ answer.operation.displayValue}} = {{ answer.value }}</span>
+      </ng-template>
+      <ng-template #wrong>
+        <span class="incorrect">{{ answer.operation.displayValue}} = {{ answer.value }}</span>
+        <span class="correct">{{ answer.operation.displayValue }} = {{ answer.operation.result }}</span>
+      </ng-template>
+    </li>
+  </ol>
+  <ng-container *ngIf="roundResult$ | async; then success else failure"></ng-container>
+  <ng-template #success>
+    <button (click)="playNextLevel()">Dalej</button>
+  </ng-template>
+  <ng-template #failure>
+    <button (click)="playNextLevel()">Jeszcze raz</button>
+  </ng-template>
+</section>
