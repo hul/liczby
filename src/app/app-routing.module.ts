@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: './subtraction/subtraction.module#SubtractionModule',
   },
   {
+    path: 'mnozenie',
+    loadChildren: './multiplication/multiplication.module#MultiplicationModule',
+  },
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full'
