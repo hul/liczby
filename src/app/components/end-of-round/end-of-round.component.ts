@@ -1,50 +1,30 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 
-import { AdditionService } from '@addition/addition.service';
-import { Answer, RoundInfo } from '@addition/addition.state';
-import { SCORE_TO_LEVEL_UP } from '@app/core/level/level.service';
+import { GameService } from '@core/game.service';
+import { Answer, RoundInfo } from '@core/game.state';
+import { SCORE_TO_LEVEL_UP } from '@core/level.service';
 
 @Component({
   selector: 'app-end-of-round',
   templateUrl: './end-of-round.component.html',
   styleUrls: [ './end-of-round.component.css' ],
 })
-export class EndOfRoundComponent implements OnInit, OnDestroy {
-  public answers$: Observable<Answer[]>;
-  public roundInfo$: Observable<RoundInfo>;
-  public roundInfo: RoundInfo;
-  public roundResult$: Observable<boolean>;
+export class EndOfRoundComponent {
 
-  private subscriptions = new Subscription();
+  @Input() answers: Answer[];
+  @Input() roundInfo: RoundInfo;
+  @Input() roundResult: boolean;
+
+  @Output() levelUpOrRetry = new EventEmitter();
 
   @HostListener('document:keydown.enter', [ '$event' ])
   public onKeydownHandler(): void {
     this.playNextLevel();
   }
 
-  constructor(
-    private additionService: AdditionService,
-  ) {
-  }
-
-  public ngOnInit(): void {
-    this.answers$ = this.additionService.answers$;
-    this.roundInfo$ = this.additionService.roundInfo$;
-    this.roundResult$ = this.additionService.roundResult$;
-    this.subscriptions.add(
-      this.roundInfo$.subscribe(roundInfo => this.roundInfo = roundInfo),
-    );
-  }
-
-  public ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
-  }
-
   public playNextLevel(): void {
-    this.roundInfo.score > SCORE_TO_LEVEL_UP
-      ? this.additionService.levelUp(this.roundInfo)
-      : this.additionService.restartLevel();
+    this.levelUpOrRetry.next();
   }
 
 }

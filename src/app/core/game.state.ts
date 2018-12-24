@@ -1,4 +1,4 @@
-export interface AdditionState {
+export interface GameState {
   answers: Answer[];
   current: number;
   operations: Operation[];
@@ -11,7 +11,7 @@ export interface AdditionState {
 }
 
 export interface FeatureAdditionState {
-  addition: AdditionState;
+  addition: GameState;
 }
 
 export interface Operation {

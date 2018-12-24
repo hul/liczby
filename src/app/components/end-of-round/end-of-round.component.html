@@ -3,10 +3,10 @@
     Koniec rundy
   </h1>
   <h2>
-    Twój wynik to: {{ (roundInfo$ | async).score }}
+    Twój wynik to: {{ roundInfo.score }}
   </h2>
   <table>
-    <tr *ngFor="let answer of answers$ | async">
+    <tr *ngFor="let answer of answers">
       <ng-container *ngIf="answer.correct; then correct; else wrong;"></ng-container>
       <ng-template #correct>
         <td>
@@ -20,7 +20,7 @@
       </ng-template>
     </tr>
   </table>
-  <ng-container *ngIf="roundResult$ | async; then success else failure"></ng-container>
+  <ng-container *ngIf="roundResult; then success else failure"></ng-container>
   <ng-template #success>
     <button (click)="playNextLevel()">Dalej</button>
   </ng-template>

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EndOfRoundComponent } from './end-of-round.component';
+import { EndOfAdditionRoundComponent } from './end-of-addition-round.component';
 
 describe('EndOfAdditionRoundComponent', () => {
-  let component: EndOfRoundComponent;
-  let fixture: ComponentFixture<EndOfRoundComponent>;
+  let component: EndOfAdditionRoundComponent;
+  let fixture: ComponentFixture<EndOfAdditionRoundComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EndOfRoundComponent ]
+      declarations: [ EndOfAdditionRoundComponent ],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EndOfRoundComponent);
+    fixture = TestBed.createComponent(EndOfAdditionRoundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

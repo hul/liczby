@@ -1,8 +1,6 @@
 <form (submit)="submit($event)" [formGroup]="form">
   <section>
-    <span>{{ operation.a}}</span>
-    <span> + </span>
-    <span>{{ operation.b }}</span>
+    <span>{{ operation.displayValue }}</span>
     <span> = </span>
     <input type="number" [formControl]="result" #input>
   </section>

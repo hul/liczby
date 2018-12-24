@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 
-import { Answer, FeatureAdditionState, RoundInfo } from '@addition/addition.state';
+import { Answer, FeatureAdditionState, RoundInfo } from '@core/game.state';
 import {
   Answer as UserAnswer,
   Correct,
@@ -15,8 +15,8 @@ import {
   RetryLevel,
   Start,
   Wrong,
-} from '@addition/store/addition.actions';
-import { LevelService, levelValue, SCORE_TO_LEVEL_UP } from '@app/core/level/level.service';
+} from '@app/store/addition.actions';
+import { LevelService, SCORE_TO_LEVEL_UP } from '@core/level.service';
 import {
   answersSelector,
   currentSelector,
@@ -24,12 +24,10 @@ import {
   operationsSelector, roundInfoSelector,
   scoreSelector,
   totalScore,
-} from '@addition/store/addition.selectors';
+} from '@app/store/addition.selectors';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AdditionService {
+export class GameService {
+  public baseRoute: string;
   public answers$ = this.store.pipe(select(answersSelector));
   public operations$ = this.store.pipe(select(operationsSelector));
   public current$ = this.store.pipe(select(currentSelector));
@@ -42,19 +40,20 @@ export class AdditionService {
   public roundResult$: Observable<boolean>;
 
   public constructor(
-    private store: Store<FeatureAdditionState>,
-    private router: Router,
+    protected store: Store<FeatureAdditionState>,
+    protected levelService: LevelService,
+    protected router: Router,
   ) {
     this.createStreams();
   }
 
   public start(): void {
     this.store.dispatch(new Start());
-    this.createOperations(levelValue(1));
+    this.createOperations(this.levelService.getMaxResultForLevel(1));
   }
 
   public createOperations(max = 10, min = 1): void {
-    this.store.dispatch(new CreateOperations(LevelService.createOperations(max, min)));
+    this.store.dispatch(new CreateOperations(this.levelService.createOperations(max, min)));
   }
 
   public answer(answer: Answer): void {
@@ -69,7 +68,7 @@ export class AdditionService {
 
   public endOfRound(roundInfo: RoundInfo): void {
     this.store.dispatch(new EndOfRound(roundInfo));
-    this.router.navigate([ '/dodawanie/koniec-rundy' ]);
+    this.router.navigate([ `${this.baseRoute}/koniec-rundy` ]);
   }
 
   private createStreams(): void {
@@ -98,14 +97,14 @@ export class AdditionService {
 
   public levelUp(roundInfo: RoundInfo): void {
     this.store.dispatch(new LevelUp());
-    const max = levelValue(roundInfo.level + 1);
-    const min = levelValue(roundInfo.level - 1);
-    this.store.dispatch(new CreateOperations(LevelService.createOperations(max, min)));
-    this.router.navigate([ '/dodawanie/runda' ]);
+    const max = this.levelService.getMaxResultForLevel(roundInfo.level + 1);
+    const min = this.levelService.getMaxResultForLevel(roundInfo.level - 1);
+    this.store.dispatch(new CreateOperations(this.levelService.createOperations(max, min)));
+    this.router.navigate([ `${this.baseRoute}/runda` ]);
   }
 
   public restartLevel(): void {
     this.store.dispatch(new RetryLevel());
-    this.router.navigate([ '/dodawanie/runda' ]);
+    this.router.navigate([ `${this.baseRoute}/runda` ]);
   }
 }

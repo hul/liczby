@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: './addition/addition.module#AdditionModule'
   },
   {
+    path: 'odejmowanie',
+    loadChildren: './subtraction/subtraction.module#SubtractionModule',
+  },
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full'

@@ -1,4 +1,4 @@
-import { AdditionState } from '../addition.state';
+import { GameState } from '@core/game.state';
 import {
   AdditionAction,
   ANSWER,
@@ -10,7 +10,7 @@ import {
   NEXT,
   RETRY_LEVEL,
   WRONG,
-} from '@addition/store/addition.actions';
+} from '@app/store/addition.actions';
 
 export const initialValue = {
   answers: [],
@@ -24,7 +24,7 @@ export const initialValue = {
   totalScore: 0,
 };
 
-export function additionReducer(state: AdditionState = initialValue, action: AdditionAction): AdditionState {
+export function additionReducer(state: GameState = initialValue, action: AdditionAction): GameState {
   switch (action.type) {
     case INIT:
       return { ...initialValue };

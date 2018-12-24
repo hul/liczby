@@ -1,4 +1,4 @@
-import { FeatureAdditionState } from '../addition.state';
+import { FeatureAdditionState } from '@core/game.state';
 
 export const currentSelector = (state: FeatureAdditionState) => state.addition.current;
 

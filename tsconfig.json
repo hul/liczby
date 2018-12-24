@@ -19,11 +19,17 @@
     ],
     "paths": {
       "@app/*": ["app/*"],
-      "@addition/*": [
-        "app/addition/*"
+      "@core/*": [
+        "app/core/*"
       ],
       "@components/*": [
         "app/components/*"
+      ],
+      "@addition/*": [
+        "app/addition/*"
+      ],
+      "@subtraction/*": [
+        "app/subtraction/*"
       ]
     }
   }

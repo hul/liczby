@@ -3,21 +3,21 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-import { AdditionService } from '@addition/addition.service';
-import { RoundInfo } from '@addition/addition.state';
+import { GameService } from '@core/game.service';
+import { RoundInfo } from '@core/game.state';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class EndOfRoundGuard implements CanActivate {
   private roundInfo$ = this.additionService.roundInfo$;
 
-  constructor(private additionService: AdditionService) {
+  constructor(private additionService: GameService) {
   }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return this.roundInfo$.pipe(map((roundInfo: RoundInfo) => Boolean(roundInfo)));
+    return this.roundInfo$.pipe(map((roundInfo: RoundInfo) => {
+      return Boolean(roundInfo);
+    }));
   }
 }

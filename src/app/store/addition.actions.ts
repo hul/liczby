@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { OperationsConfig, Answer as UserAnswer, RoundInfo } from '../addition.state';
+import { OperationsConfig, Answer as UserAnswer, RoundInfo } from '@core/game.state';
 
 export const TYPE = info => `[Addition] ${info}`;
 

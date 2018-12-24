@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Answer, Operation } from '@addition/addition.state';
+import { Answer, Operation } from '@core/game.state';
 
 @Component({
   selector: 'app-round-status',

@@ -4,8 +4,8 @@ import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 
-import { FeatureAdditionState } from '@addition/addition.state';
-import { operationsSelector } from '@addition/store/addition.selectors';
+import { FeatureAdditionState } from '@core/game.state';
+import { operationsSelector } from '@app/store/addition.selectors';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,9 @@ export class ContinueGameGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     return this.operations$.pipe(
-      map(operations => Boolean(operations && operations.length)),
+      map(operations => {
+        return Boolean(operations && operations.length);
+      }),
       tap(result => !result && this.router.navigate(['dodawanie'])),
     );
   }
