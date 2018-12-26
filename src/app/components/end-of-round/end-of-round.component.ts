@@ -1,6 +1,6 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
-import { Answer, RoundInfo } from '@core/game.state';
+import { Answer, RoundInfo } from '@core/models/game.model';
 
 @Component({
   selector: 'app-end-of-round',

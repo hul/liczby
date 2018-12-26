@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GameService } from '@core/services/game.service';
-import { GameComponent } from '@core/game/game.component';
+import { GameComponent } from '@core/components/game.component';
 
 @Component({
   selector: 'app-multiplication',

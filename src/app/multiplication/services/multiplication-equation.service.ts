@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Operation, OperationsConfig } from '@core/game.state';
+import { Operation, OperationsConfig } from '@core/models/game.model';
 
 @Injectable()
 export class MultiplicationEquationService {

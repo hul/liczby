@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Operation, OperationsConfig } from '../game.state';
+import { Operation, OperationsConfig } from '@core/models/game.model';
 import { EquationType } from '@core/services/equation-type.service';
 
 export const SCORE_TO_LEVEL_UP = 7;

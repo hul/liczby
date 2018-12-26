@@ -4,7 +4,7 @@ import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 
-import { FeatureAdditionState } from '../game.state';
+import { FeatureAdditionState } from '@core/models/game.model';
 import { operationsSelector } from '../store/addition.selectors';
 
 @Injectable({

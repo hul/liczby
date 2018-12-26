@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { GameService } from '@core/services/game.service';
-import { RoundInfo } from '@core/game.state';
+import { RoundInfo } from '@core/models/game.model';
 
 @Injectable()
 export class EndOfRoundGuard implements CanActivate {

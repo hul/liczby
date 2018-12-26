@@ -1,4 +1,4 @@
-import { Operation, OperationsConfig } from '../game.state';
+import { Operation, OperationsConfig } from '@core/models/game.model';
 
 export interface EquationTypeInterface {
   operator: string;

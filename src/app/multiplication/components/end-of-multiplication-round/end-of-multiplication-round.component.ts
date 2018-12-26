@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { GameService } from '@core/services/game.service';
-import { EndOfGameComponent } from '@core/game/end-of-game.component';
+import { EndOfGameComponent } from '@core/components/end-of-game.component';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

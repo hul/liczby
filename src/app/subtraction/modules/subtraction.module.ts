@@ -4,7 +4,7 @@ import { StoreModule } from '@ngrx/store';
 
 import { additionReducer } from '@core/store/addition.reducer';
 import { EquationType } from '@core/services/equation-type.service';
-import { GameModule } from '@core/game/game.module';
+import { CoreModule } from '@core/modules/core.module';
 import { GameService } from '@core/services/game.service';
 import { LevelService } from '@core/services/level.service';
 import { SubtractionComponent } from '@subtraction/components/subtraction/subtraction.component';
@@ -21,7 +21,7 @@ import { EndOfRoundGuard } from '@components/end-of-round/end-of-round.guard';
   imports: [
     CommonModule,
     SubtractionRoutingModule,
-    GameModule,
+    CoreModule,
     StoreModule.forFeature('addition', additionReducer),
   ],
   providers: [

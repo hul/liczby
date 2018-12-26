@@ -4,7 +4,7 @@ import { filter, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 
-import { Answer, FeatureAdditionState, RoundInfo } from '../game.state';
+import { Answer, FeatureAdditionState, RoundInfo } from '@core/models/game.model';
 import {
   Answer as UserAnswer,
   Correct,

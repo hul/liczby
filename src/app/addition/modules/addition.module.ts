@@ -9,7 +9,7 @@ import { AdditionTypeService } from '@addition/services/addition-type.service';
 import { EndOfAdditionRoundComponent } from '@addition/components/end-of-addition-round/end-of-addition-round.component';
 import { EndOfRoundGuard } from '@components/end-of-round/end-of-round.guard';
 import { EquationType } from '@core/services/equation-type.service';
-import { GameModule } from '@core/game/game.module';
+import { CoreModule } from '@core/modules/core.module';
 import { GameService } from '@core/services/game.service';
 import { LevelService } from '@core/services/level.service';
 
@@ -21,7 +21,7 @@ import { LevelService } from '@core/services/level.service';
   imports: [
     CommonModule,
     AdditionRoutingModule,
-    GameModule,
+    CoreModule,
     StoreModule.forFeature('addition', additionReducer),
   ],
   providers: [

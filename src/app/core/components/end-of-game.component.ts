@@ -1,11 +1,11 @@
 import { Observable, Subscription } from 'rxjs';
-import { Answer, RoundInfo } from '@core/game.state';
+import { Answer, RoundInfo } from '@core/models/game.model';
 import { OnDestroy, OnInit } from '@angular/core';
 import { SCORE_TO_LEVEL_UP } from '@core/services/level.service';
 import { ActivatedRoute } from '@angular/router';
 import { GameService } from '@core/services/game.service';
 
-export class EndOfGameComponent implements OnInit, OnDestroy {
+export abstract class EndOfGameComponent implements OnInit, OnDestroy {
   public answers$: Observable<Answer[]>;
   public roundInfo$: Observable<RoundInfo>;
   public roundInfo: RoundInfo;
@@ -18,7 +18,6 @@ export class EndOfGameComponent implements OnInit, OnDestroy {
     protected gameService: GameService,
   ) {
   }
-
 
   public ngOnInit(): void {
     this.subscriptions.add(this.roundInfo$.subscribe(roundInfo => this.roundInfo = roundInfo));

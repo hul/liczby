@@ -3,11 +3,11 @@ import { filter } from 'rxjs/operators';
 import { Observable, Subscription } from 'rxjs';
 import { OnDestroy } from '@angular/core';
 
-import { Answer, Operation, RoundInfo } from '../game.state';
+import { Answer, Operation, RoundInfo } from '@core/models/game.model';
 import { GameService } from '../services/game.service';
 
 
-export class GameComponent implements OnDestroy {
+export abstract class GameComponent implements OnDestroy {
   answers$: Observable<Answer[]> = this.gameService.answers$;
   operations$: Observable<Operation[]> = this.gameService.operations$;
   current$: Observable<number> = this.gameService.current$;
