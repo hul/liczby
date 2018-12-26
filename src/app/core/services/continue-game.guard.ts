@@ -2,18 +2,15 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Injectable } from '@angular/core';
 import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { select, Store } from '@ngrx/store';
 
-import { FeatureAdditionState } from '@core/models/game.model';
-import { operationsSelector } from '../store/addition.selectors';
+import { GameService } from '@core/services/game.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ContinueGameGuard implements CanActivate {
-  private operations$ = this.store.pipe(select(operationsSelector));
+  private operations$ = this.gameService.operations$;
 
-  public constructor(private store: Store<FeatureAdditionState>, private router: Router) {}
+  public constructor(private gameService: GameService, private router: Router) {
+  }
 
   canActivate(
     next: ActivatedRouteSnapshot,
