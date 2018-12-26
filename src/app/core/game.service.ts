@@ -1,7 +1,7 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 
 import { Answer, FeatureAdditionState, RoundInfo } from '@core/game.state';
@@ -26,8 +26,8 @@ import {
   totalScore,
 } from '@app/store/addition.selectors';
 
+@Injectable()
 export class GameService {
-  public baseRoute: string;
   public answers$ = this.store.pipe(select(answersSelector));
   public operations$ = this.store.pipe(select(operationsSelector));
   public current$ = this.store.pipe(select(currentSelector));
@@ -66,9 +66,9 @@ export class GameService {
     this.store.dispatch(new Next());
   }
 
-  public endOfRound(roundInfo: RoundInfo): void {
+  public endOfRound(roundInfo: RoundInfo, activatedRoute: ActivatedRoute): void {
     this.store.dispatch(new EndOfRound(roundInfo));
-    this.router.navigate([ `${this.baseRoute}/koniec-rundy` ]);
+    this.router.navigate([ `../koniec-rundy` ], { relativeTo: activatedRoute });
   }
 
   private createStreams(): void {
@@ -95,16 +95,16 @@ export class GameService {
     );
   }
 
-  public levelUp(roundInfo: RoundInfo): void {
+  public levelUp(roundInfo: RoundInfo, activatedRoute: ActivatedRoute): void {
     this.store.dispatch(new LevelUp());
     const max = this.levelService.getMaxResultForLevel(roundInfo.level + 1);
     const min = this.levelService.getMaxResultForLevel(roundInfo.level - 1);
     this.store.dispatch(new CreateOperations(this.levelService.createOperations(max, min)));
-    this.router.navigate([ `${this.baseRoute}/runda` ]);
+    this.router.navigate([ `../runda` ], { relativeTo: activatedRoute });
   }
 
-  public restartLevel(): void {
+  public restartLevel(activatedRoute: ActivatedRoute): void {
     this.store.dispatch(new RetryLevel());
-    this.router.navigate([ `${this.baseRoute}/runda` ]);
+    this.router.navigate([ `../runda` ], { relativeTo: activatedRoute });
   }
 }

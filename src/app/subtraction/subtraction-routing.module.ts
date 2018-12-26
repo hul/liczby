@@ -9,6 +9,10 @@ import { SubtractionComponent } from '@app/subtraction/subtraction/subtraction.c
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'start',
+  },
+  {
+    path: 'start',
     component: SubtractionComponent,
     data: { start: true },
   },

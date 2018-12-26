@@ -3,7 +3,7 @@ import { Operation, OperationsConfig } from '@core/game.state';
 
 @Injectable()
 export class MultiplicationEquationService {
-  readonly operator: string = '*';
+  readonly operator: string = 'x';
 
   public createDisplayValue(a: number, b: number): string {
     return `${a} ${this.operator} ${b}`;

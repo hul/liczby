@@ -6,14 +6,12 @@ import { MultiplicationComponent } from './multiplication/multiplication.compone
 import { EndOfMultiplicationRoundComponent } from './end-of-multiplication-round/end-of-multiplication-round.component';
 import { LevelService } from '@core/level.service';
 import { GameService } from '@core/game.service';
-import { AdditionGameService } from '@addition/addition-game.service';
 import { EndOfRoundGuard } from '@components/end-of-round/end-of-round.guard';
 import { EquationType } from '@core/equation-type.service';
 import { MultiplicationEquationService } from '@app/multiplication/multiplication-equation.service';
 import { GameModule } from '@core/game/game.module';
 import { StoreModule } from '@ngrx/store';
 import { additionReducer } from '@app/store/addition.reducer';
-import { MultiplicationGameService } from '@app/multiplication/multiplication-game.service';
 
 @NgModule({
   declarations: [ MultiplicationComponent, EndOfMultiplicationRoundComponent ],
@@ -25,7 +23,7 @@ import { MultiplicationGameService } from '@app/multiplication/multiplication-ga
   ],
   providers: [
     LevelService,
-    { provide: GameService, useClass: MultiplicationGameService },
+    GameService,
     EndOfRoundGuard,
     { provide: EquationType, useClass: MultiplicationEquationService },
   ],

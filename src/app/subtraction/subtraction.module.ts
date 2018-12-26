@@ -12,7 +12,6 @@ import { SubtractionRoutingModule } from '@subtraction/subtraction-routing.modul
 import { SubtractionTypeService } from '@core/subtraction-type.service';
 import { EndOfSubtractionRoundComponent } from './end-of-subtraction-round/end-of-subtraction-round.component';
 import { EndOfRoundGuard } from '@components/end-of-round/end-of-round.guard';
-import { SubtractionGameService } from '@subtraction/subtraction-game.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,7 @@ import { SubtractionGameService } from '@subtraction/subtraction-game.service';
   ],
   providers: [
     LevelService,
-    { provide: GameService, useClass: SubtractionGameService },
+    GameService,
     EndOfRoundGuard,
     { provide: EquationType, useClass: SubtractionTypeService },
   ],

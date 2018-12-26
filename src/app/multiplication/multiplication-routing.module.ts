@@ -9,6 +9,10 @@ import { EndOfMultiplicationRoundComponent } from '@app/multiplication/end-of-mu
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'start',
+  },
+  {
+    path: 'start',
     component: MultiplicationComponent,
     data: { start: true },
   },

@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
-import { OnDestroy } from '@angular/core';
 import { filter } from 'rxjs/operators';
 import { Observable, Subscription } from 'rxjs';
+import { OnDestroy } from '@angular/core';
 
 import { Answer, Operation, RoundInfo } from '../game.state';
 import { GameService } from '../game.service';
@@ -41,7 +41,7 @@ export class GameComponent implements OnDestroy {
     this.subscriptions.add(
       this.endOfRound$.pipe(filter(roundInfo => roundInfo.last))
         .subscribe(roundInfo => {
-          this.gameService.endOfRound(roundInfo);
+          this.gameService.endOfRound(roundInfo, this.activatedRoute);
         }),
     );
   }

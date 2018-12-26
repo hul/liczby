@@ -9,8 +9,12 @@ import { EndOfRoundGuard } from '@components/end-of-round/end-of-round.guard';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'start',
+  },
+  {
+    path: 'start',
     component: AdditionComponent,
-    data: { start: true }
+    data: { start: true },
   },
   {
     path: 'runda',

@@ -12,7 +12,6 @@ import { GameService } from '@core/game.service';
 import { GameModule } from '@core/game/game.module';
 import { EndOfAdditionRoundComponent } from '@addition/end-of-addition-round/end-of-addition-round.component';
 import { EndOfRoundGuard } from '@components/end-of-round/end-of-round.guard';
-import { AdditionGameService } from '@addition/addition-game.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,7 @@ import { AdditionGameService } from '@addition/addition-game.service';
   ],
   providers: [
     LevelService,
-    { provide: GameService, useClass: AdditionGameService },
+    GameService,
     EndOfRoundGuard,
     { provide: EquationType, useClass: AdditionTypeService },
   ]

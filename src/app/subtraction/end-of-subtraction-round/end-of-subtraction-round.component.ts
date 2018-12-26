@@ -1,6 +1,7 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { GameService } from '@core/game.service';
 import { EndOfGameComponent } from '@core/game/end-of-game.component';
+import { GameService } from '@core/game.service';
 import { SCORE_TO_LEVEL_UP } from '@core/level.service';
 
 @Component({
@@ -14,13 +15,11 @@ export class EndOfSubtractionRoundComponent extends EndOfGameComponent {
   public roundInfo$ = this.gameService.roundInfo$;
   public roundResult$ = this.gameService.roundResult$;
 
-  constructor(private gameService: GameService) {
-    super();
+  constructor(
+    activatedRoute: ActivatedRoute,
+    gameService: GameService,
+  ) {
+    super(activatedRoute, gameService);
   }
 
-  public levelUpOrRetry(): void {
-    this.roundInfo.score > SCORE_TO_LEVEL_UP
-      ? this.gameService.levelUp(this.roundInfo)
-      : this.gameService.restartLevel();
-  }
 }
