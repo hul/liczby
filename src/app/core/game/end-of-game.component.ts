@@ -1,9 +1,9 @@
 import { Observable, Subscription } from 'rxjs';
 import { Answer, RoundInfo } from '@core/game.state';
 import { OnDestroy, OnInit } from '@angular/core';
-import { SCORE_TO_LEVEL_UP } from '@core/level.service';
+import { SCORE_TO_LEVEL_UP } from '@core/services/level.service';
 import { ActivatedRoute } from '@angular/router';
-import { GameService } from '@core/game.service';
+import { GameService } from '@core/services/game.service';
 
 export class EndOfGameComponent implements OnInit, OnDestroy {
   public answers$: Observable<Answer[]>;

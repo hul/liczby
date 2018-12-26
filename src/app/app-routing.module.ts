@@ -4,15 +4,15 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: 'dodawanie',
-    loadChildren: './addition/addition.module#AdditionModule'
+    loadChildren: './addition/modules/addition.module#AdditionModule',
   },
   {
     path: 'odejmowanie',
-    loadChildren: './subtraction/subtraction.module#SubtractionModule',
+    loadChildren: './subtraction/modules/subtraction.module#SubtractionModule',
   },
   {
     path: 'mnozenie',
-    loadChildren: './multiplication/multiplication.module#MultiplicationModule',
+    loadChildren: './multiplication/modules/multiplication.module#MultiplicationModule',
   },
   {
     path: '',

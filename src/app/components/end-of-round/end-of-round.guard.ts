@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-import { GameService } from '@core/game.service';
+import { GameService } from '@core/services/game.service';
 import { RoundInfo } from '@core/game.state';
 
 @Injectable()

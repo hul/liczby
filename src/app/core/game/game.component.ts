@@ -4,7 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { OnDestroy } from '@angular/core';
 
 import { Answer, Operation, RoundInfo } from '../game.state';
-import { GameService } from '../game.service';
+import { GameService } from '../services/game.service';
 
 
 export class GameComponent implements OnDestroy {
