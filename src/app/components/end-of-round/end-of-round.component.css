@@ -22,6 +22,10 @@ table {
   margin: 2rem auto;
 }
 
+.answers-table tr:last-child td {
+  border: none;
+}
+
 td {
   text-align: left;
 }

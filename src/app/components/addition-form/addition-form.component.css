@@ -1,11 +1,13 @@
 form {
-  padding: 4rem;
   text-align: center;
-  font-size: 4rem;
+  font-size: 32px;
 }
 
-input {
-  font-size: 4rem;
-  width: 10rem;
-  border: none;
+button {
+  margin: 24px 0;
+}
+
+nz-input-number {
+  font-size: 32px;
+  height: auto;
 }

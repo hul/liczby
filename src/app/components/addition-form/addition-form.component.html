@@ -2,7 +2,7 @@
   <section>
     <span>{{ operation.displayValue }}</span>
     <span> = </span>
-    <input type="number" [formControl]="result" #input>
+    <nz-input-number #input [formControl]="result" (input)="onChange($event)"></nz-input-number>
   </section>
-  <button type="submit">Sprawdź</button>
+  <button nz-button [disabled]="result.invalid" nzSize="large" nzType="primary" type="submit">Sprawdź</button>
 </form>
