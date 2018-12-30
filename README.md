@@ -1,15 +1,10 @@
 # TODO
 
-* po udzieleniu błędnej odpowiedzi, pokaż prawidłowy wynik
-* wygląd
-
-## Done
-+ publikacja
-+ zmiana nazwy projektu z ng-redux na coś sensowego
-+ ścieżka /dodawanie/runda niedostępna jeżeli nie rozpoczęto rozgrywki
-+ ścieżka /dodawanie/koniec-rundy niedostępna jeżeli runda nie jest zakończona
-+ poprawna / błędna odpowiedź
-+ autofocus na input
+* remove addition naming from core
+* improve tasks generation
+* show max in the ui
+* player choice
+* new mini games
 
 # Liczby
 

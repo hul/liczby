@@ -21,6 +21,7 @@ export class LevelService {
     };
     return this.shuffle(this.operations)
       .filter(operation => this.equationType.isEquationValid(operation, config))
+      .filter(operation => Number.isInteger(operation.result))
       .slice(0, config.count);
   }
 

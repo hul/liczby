@@ -1,0 +1,18 @@
+<nz-card nzTitle="Ile to jest?" [nzExtra]="hud">
+  <app-addition-form
+    (answer)="onAnswer($event)"
+    [operation]="currentOperation$ | async"
+  ></app-addition-form>
+  <app-round-status
+    [answers]="answers$ | async"
+    [operations]="operations$ | async"
+    [currentRound]="current$ | async"
+  ></app-round-status>
+</nz-card>
+<ng-template #hud>
+  <app-hud
+    [level]="level$ | async"
+    [score]="score$ | async"
+    [totalScore]="totalScore$ | async"
+  ></app-hud>
+</ng-template>

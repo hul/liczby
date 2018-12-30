@@ -1,0 +1,6 @@
+<app-end-of-round
+  [answers]="answers$ | async"
+  [roundInfo]="roundInfo$ | async"
+  [roundResult]="roundResult$ | async"
+  (levelUpOrRetry)="levelUpOrRetry()"
+></app-end-of-round>

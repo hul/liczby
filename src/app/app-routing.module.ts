@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: './multiplication/modules/multiplication.module#MultiplicationModule',
   },
   {
+    path: 'dzielenie',
+    loadChildren: './division/modules/division.module#DivisionModule',
+  },
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full'
