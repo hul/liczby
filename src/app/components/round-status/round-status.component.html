@@ -6,6 +6,11 @@
       [class.app-correct]="answers[i]?.correct"
       [class.app-wrong]="answers[i]?.correct === false"
     >
+      <i *ngIf="!answers[i] && i === currentRound" nz-icon [type]="'loading'"></i>
+      <i *ngIf="!answers[i] && i !== currentRound" nz-icon [type]="'question-circle'" [theme]="'twotone'"></i>
+      <i *ngIf="answers[i]?.correct" nz-icon [type]="'smile'" [theme]="'twotone'" [twoToneColor]="'#52c41a'"></i>
+      <i *ngIf="answers[i]?.correct === false" nz-icon [type]="'frown'" [theme]="'twotone'"
+         [twoToneColor]="'#eb2f96'"></i>
     </li>
   </ul>
 </section>

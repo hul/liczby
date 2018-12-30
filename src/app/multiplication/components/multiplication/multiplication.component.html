@@ -1,10 +1,4 @@
-<section>
-  <h1>Mnożenie</h1>
-  <app-hud
-    [level]="level$ | async"
-    [score]="score$ | async"
-    [totalScore]="totalScore$ | async"
-  ></app-hud>
+<nz-card nzTitle="Ile to jest?" [nzExtra]="hud">
   <app-addition-form
     (answer)="onAnswer($event)"
     [operation]="currentOperation$ | async"
@@ -14,4 +8,11 @@
     [operations]="operations$ | async"
     [currentRound]="current$ | async"
   ></app-round-status>
-</section>
+</nz-card>
+<ng-template #hud>
+  <app-hud
+    [level]="level$ | async"
+    [score]="score$ | async"
+    [totalScore]="totalScore$ | async"
+  ></app-hud>
+</ng-template>

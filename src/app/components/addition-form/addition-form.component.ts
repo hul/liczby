@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 import { SimpleChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Answer, Operation } from '@core/models/game.model';
+import { NzInputNumberComponent } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-addition-form',
@@ -17,7 +18,7 @@ export class AdditionFormComponent implements OnChanges, OnInit, AfterViewInit {
   public answer = new EventEmitter<Answer>();
 
   @ViewChild('input')
-  public input: ElementRef;
+  public input: NzInputNumberComponent;
 
   public form: FormGroup;
 
@@ -38,7 +39,7 @@ export class AdditionFormComponent implements OnChanges, OnInit, AfterViewInit {
   }
 
   public ngAfterViewInit(): void {
-    this.input.nativeElement.focus();
+    Promise.resolve().then(() => this.input.focus());
   }
 
   public submit(event: Event): void {
@@ -57,6 +58,11 @@ export class AdditionFormComponent implements OnChanges, OnInit, AfterViewInit {
 
   public get result(): FormControl {
     return this.form.get('result') as FormControl;
+  }
+
+  public onChange(event: Event): void {
+    const value = parseInt((event.target as HTMLInputElement).value, 10);
+    this.result.setValue(isNaN(value) ? '' : value);
   }
 
   private reset() {

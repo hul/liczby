@@ -1,11 +1,9 @@
 .app-navigation {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  background: #efefef;
+
 }
 
 .app-navigation li {
   display: inline;
   margin-right: 1rem;
+  float: left;
 }
