@@ -3,26 +3,26 @@ import { CommonModule } from '@angular/common';
 import { NgZorroAntdModule, NZ_I18N, NZ_ICONS, pl_PL } from 'ng-zorro-antd';
 import { HttpClientModule } from '@angular/common/http';
 import {
-  CheckCircleFill,
   FrownFill,
   FrownOutline,
   FrownTwoTone,
   LoadingOutline,
   QuestionCircleFill,
   QuestionCircleOutline,
+  QuestionCircleTwoTone,
   SmileFill,
   SmileOutline,
   SmileTwoTone,
 } from '@ant-design/icons-angular/icons';
 
 const icons = [
-  CheckCircleFill,
   FrownFill,
   FrownOutline,
   FrownTwoTone,
   LoadingOutline,
   QuestionCircleFill,
   QuestionCircleOutline,
+  QuestionCircleTwoTone,
   SmileFill,
   SmileOutline,
   SmileTwoTone,
